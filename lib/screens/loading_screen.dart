@@ -13,7 +13,7 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
   @override
   double longitude;
-
+//this function should be builded after the build function of our state 
   void initState() {
     super.initState();
     getLocationData();
@@ -27,7 +27,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 }*/
   void getLocationData() async {
     var weatherData = await WeatherModel().getLocationWeather();
-// to make the connection between screens
+// to make the connection between screens 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return LocationScreen(
         locationWeather: weatherData,

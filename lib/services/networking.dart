@@ -10,11 +10,11 @@ class NetworkHelper {
     http.Response response = await http.get(url);
 
     if (response.statusCode == 200) {
-      String data = response.body;
+      String data = response.body; // the content of APIs
 
-      return jsonDecode(data);
+      return jsonDecode(data); // obtain json file with format : key : value 
     } else {
-      print(response.statusCode);
+      print(response.statusCode); //type of error
     }
   }
 }

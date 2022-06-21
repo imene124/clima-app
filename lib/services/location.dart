@@ -4,8 +4,10 @@ class Location {
   double latitude;
   double longitude;
 
+
   Future<void> getCurrentLocation() async {
     try {
+      // to detect the position of our devices Android or IoS 
       Position position = await Geolocator()
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
 

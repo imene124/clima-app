@@ -22,27 +22,20 @@ class _LocationScreenState extends State<LocationScreen> {
   @override
   void initState() {
     super.initState();
-
+    // we will update the data coming from the parent our stateful widget 
     updateUI(widget.locationWeather);
   }
 
   void updateUI(dynamic weatherData) {
-    setState(() {
-      if (weatherData == null) {
-        temperature = 0;
-        weatherIcon = 'Error';
-        weatherMessage = 'Unable to get weather data';
-        cityName = '';
-        return;
-      }
-      //how obtain data from json file
-      double temp = weatherData['main']['temp'];
-      temperature = temp.toInt();
-      var condition = weatherData['weather'][0]['id'];
-      weatherIcon = weather.getWeatherIcon(condition);
-      weatherMessage = weather.getMessage(temperature);
-      cityName = weatherData['name'];
-    });
+    //how obtain data from json file
+    double temp = weatherData['main']['temp'];
+    temperature = temp.toInt(); //convert double var to int var type
+    var condition = weatherData['weather'][0]['id'];
+    //get the icon for the wheather data we want  be accses to it
+    weatherIcon = weather.getWeatherIcon(condition); 
+    //get the message  for the wheather data we want  be accses to it
+    weatherMessage = weather.getMessage(temperature);
+    cityName = weatherData['name'];
   }
 
   @override
@@ -87,6 +80,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 child: Row(
                   children: <Widget>[
                     Text(
+                      //will contain the value of temperature 
                       '$temperature°',
                       style: kTempTextStyle,
                     ),
@@ -100,6 +94,7 @@ class _LocationScreenState extends State<LocationScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
+                  //will contain the wheather of the city considerate 
                   '$weatherMessage in $cityName',
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
